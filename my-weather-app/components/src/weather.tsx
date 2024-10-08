@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherSearch from "./weathersearch";
 import Forecast from "./forecast";
 import "./index.css";
 
-export default function Weather(props) {
-  const [weatherInfo, setWeatherInfo] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
-  function cityWeather(response) {
+interface WeatherProps {
+  defaultCity: string;
+}
+
+interface WeatherData {
+  ready: boolean;
+  coordinates?: { lat: number; lon: number };
+  temperature?: number;
+  wind?: number;
+  city?: string;
+  humidity?: number;
+  description?: string;
+  icon?: string;
+  date?: Date;
+}
+
+export default function Weather({ defaultCity }: WeatherProps) {
+  const [weatherInfo, setWeatherInfo] = useState<WeatherData>({ ready: false });
+  const [city, setCity] = useState<string>(defaultCity);
+
+  function cityWeather(response: any) {
     setWeatherInfo({
       ready: true,
       coordinates: response.data.coord,
@@ -20,18 +37,28 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
     });
   }
+
   function search() {
     const apiKey = "9cb72bec958f8fb02391985ed7b219d2";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(cityWeather);
   }
-  function handleSubmit(event) {
+
+  function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    search(city);
+    search();
   }
-  function handleCityChange(event) {
+
+  function handleCityChange(event: React.ChangeEvent<HTMLInputElement>) {
     setCity(event.target.value);
   }
+
+  useEffect(() => {
+    if (!weatherInfo.ready) {
+      search();
+    }
+  }, [weatherInfo.ready]);
+
   if (weatherInfo.ready) {
     return (
       <div>
@@ -46,7 +73,7 @@ export default function Weather(props) {
                 <input
                   type="search"
                   placeholder="Type a city.."
-                  autoFocus="on"
+                  autoFocus
                   autoComplete="off"
                   className="form-control shadow-sm"
                   id="search-input"
@@ -64,12 +91,11 @@ export default function Weather(props) {
           </form>
           <br />
           <WeatherSearch data={weatherInfo} />
-          <Forecast coordinates={weatherInfo.coordinates} />
+          <Forecast coordinates={weatherInfo.coordinates!} />
         </div>
       </div>
     );
   } else {
-    search();
     return "loading...";
   }
 }

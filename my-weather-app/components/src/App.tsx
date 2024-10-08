@@ -1,6 +1,5 @@
 import "./App.css";
 import "./index.css";
-
 import Weather from "./weather";
 
 export default function App() {
@@ -15,7 +14,7 @@ export default function App() {
         >
           Open-source code
         </a>
-        ,by Keamogetse Mohlala
+        , by Keamogetse Mohlala
       </small>
     </div>
   );

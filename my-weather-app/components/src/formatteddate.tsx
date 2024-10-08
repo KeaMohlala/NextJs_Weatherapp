@@ -1,8 +1,14 @@
 import React from "react";
 import "./index.css";
 
-export default function FormattedDate(props) {
-  let days = [
+// Define prop types for FormattedDate
+interface FormattedDateProps {
+  date: Date;
+  alt: string;
+}
+
+export default function FormattedDate({ date }: FormattedDateProps) {
+  const days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -11,7 +17,7 @@ export default function FormattedDate(props) {
     "Friday",
     "Saturday",
   ];
-  let months = [
+  const months = [
     "January",
     "Febuary",
     "March",
@@ -25,21 +31,23 @@ export default function FormattedDate(props) {
     "November",
     "December",
   ];
-  let day = days[props.date.getDay()];
-  let date = props.date.getDate();
-  let month = months[props.date.getMonth()];
-  let hours = props.date.getHours();
+
+  const day = days[date.getDay()];
+  const dayDate = date.getDate();
+  const month = months[date.getMonth()];
+  let hours: string | number = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = props.date.getMinutes();
 
+  let minutes: string | number = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+
   return (
     <div className="mb-5 mt-3">
-      {day}, {date} {month}, {hours}:{minutes}
+      {day}, {dayDate} {month}, {hours}:{minutes}
     </div>
   );
 }
