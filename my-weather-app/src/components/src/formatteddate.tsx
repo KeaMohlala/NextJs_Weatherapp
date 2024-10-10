@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+//import "./index.css";
 
 // Define prop types for FormattedDate
 interface FormattedDateProps {
@@ -49,7 +49,7 @@ export default function FormattedDate({ date }: FormattedDateProps) {
   }
 
   return (
-    <div className="mb-5 mt-3">
+    <div className="mb-5 mt-3 text-gray-700 font-medium">
       {day}, {dayDate} {month}, {hours}:{minutes}
     </div>
   );

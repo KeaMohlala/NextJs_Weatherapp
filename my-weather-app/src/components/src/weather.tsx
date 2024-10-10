@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherSearch from "./weathersearch";
 import Forecast from "./forecast";
-import "./index.css";
+//import "./index.css";
 
 interface WeatherProps {
   defaultCity: string;
@@ -60,60 +60,57 @@ export default function Weather({ defaultCity }: WeatherProps) {
 
   if (weatherInfo.ready) {
     return (
-      <div>
-        <div className="container">
-          <form
-            className="search-form"
-            id="search-form"
-            onSubmit={handleSubmit}
-          >
-            <div className="row">
-              <div className="col-9">
-                <input
-                  type="search"
-                  placeholder="Type a city.."
-                  autoFocus
-                  autoComplete="off"
-                  className="form-control shadow-sm"
-                  id="search-input"
-                  onChange={handleCityChange}
-                />
-              </div>
-              <div className="col-3">
-                <input
-                  type="submit"
-                  value="Search"
-                  className="form-control btn btn-info shadow-sm w-100"
-                />
-              </div>
-            </div>
-          </form>
-          <br />
-          {/* Only pass weatherInfo to WeatherSearch when all required data is present */}
-          {weatherInfo.city &&
-            weatherInfo.temperature !== undefined &&
-            weatherInfo.date &&
-            weatherInfo.icon &&
-            weatherInfo.description &&
-            weatherInfo.humidity !== undefined &&
-            weatherInfo.wind !== undefined && (
-              <WeatherSearch
-                data={{
-                  city: weatherInfo.city,
-                  temperature: weatherInfo.temperature,
-                  date: weatherInfo.date,
-                  icon: weatherInfo.icon,
-                  description: weatherInfo.description,
-                  humidity: weatherInfo.humidity,
-                  wind: weatherInfo.wind,
-                }}
+      <div className="container mx-auto p-5">
+        <form
+          className="search-form mb-5"
+          id="search-form"
+          onSubmit={handleSubmit}
+        >
+          <div className="flex">
+            <div className="flex-grow mr-2">
+              <input
+                type="search"
+                placeholder="Type a city.."
+                autoFocus
+                autoComplete="off"
+                className="form-control shadow-sm p-2 border rounded"
+                id="search-input"
+                onChange={handleCityChange}
               />
-            )}
-          <Forecast coordinates={weatherInfo.coordinates!} />
-        </div>
+            </div>
+            <div className="flex-shrink">
+              <input
+                type="submit"
+                value="Search"
+                className="form-control btn bg-blue-500 text-white shadow-sm w-full rounded"
+              />
+            </div>
+          </div>
+        </form>
+        {/* Only pass weatherInfo to WeatherSearch when all required data is present */}
+        {weatherInfo.city &&
+          weatherInfo.temperature !== undefined &&
+          weatherInfo.date &&
+          weatherInfo.icon &&
+          weatherInfo.description &&
+          weatherInfo.humidity !== undefined &&
+          weatherInfo.wind !== undefined && (
+            <WeatherSearch
+              data={{
+                city: weatherInfo.city,
+                temperature: weatherInfo.temperature,
+                date: weatherInfo.date,
+                icon: weatherInfo.icon,
+                description: weatherInfo.description,
+                humidity: weatherInfo.humidity,
+                wind: weatherInfo.wind,
+              }}
+            />
+          )}
+        <Forecast coordinates={weatherInfo.coordinates!} />
       </div>
     );
   } else {
-    return <div className="loading">Loading...</div>;
+    return <div className="text-center text-gray-500">Loading...</div>;
   }
 }

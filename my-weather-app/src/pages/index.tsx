@@ -56,7 +56,7 @@ const Home: React.FC<HomeProps> = ({ initialData }) => {
 
 // Server-Side Rendering (SSR) for the initial load
 export const getServerSideProps: GetServerSideProps = async () => {
-  const city = "Johannesburg"; // Default city for initial SSR
+  const city = "District X"; // Default city for initial SSR
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/weather?city=${city}`;
   const response = await fetch(apiUrl);
   const data = await response.json();
