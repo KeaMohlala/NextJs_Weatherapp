@@ -61,14 +61,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch(apiUrl);
   const data = await response.json();
 
-  // Log the data to see its structure
-  console.log(data);
-
   return {
     props: {
       initialData: {
-        city: data.weather ? data.weather.name : "Unknown",
-        temperature: data.weather ? data.weather.main.temp : 0,
+        city: data.weather ? data.weather.name : "District X",
+        temperature: data.weather ? data.weather.main.temp : 20,
         date: new Date().toISOString(), // Convert to string
         icon:
           data.weather && data.weather.weather.length > 0
@@ -77,9 +74,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
         description:
           data.weather && data.weather.weather.length > 0
             ? data.weather.weather[0].description
-            : "",
-        humidity: data.weather ? data.weather.main.humidity : 0,
-        wind: data.weather ? data.weather.wind.speed : 0,
+            : "Partly Cloudy",
+        humidity: data.weather ? data.weather.main.humidity : 60,
+        wind: data.weather ? data.weather.wind.speed : 45,
       },
     },
   };
