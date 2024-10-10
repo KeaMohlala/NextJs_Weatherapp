@@ -28,7 +28,7 @@ const Home: React.FC<HomeProps> = ({ initialData }) => {
       setWeatherData({
         city: data.weather.name,
         temperature: data.weather.main.temp,
-        date: new Date().toISOString(), // Convert to string
+        date: new Date(), // Use Date object instead of string
         icon: data.weather.weather[0].icon,
         description: data.weather.weather[0].description,
         humidity: data.weather.main.humidity,
