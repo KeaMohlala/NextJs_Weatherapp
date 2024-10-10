@@ -95,6 +95,6 @@ export default function Weather({ defaultCity }: WeatherProps) {
       </div>
     );
   } else {
-    return "loading...";
+    return <div className="loading">Loading...</div>;
   }
 }
