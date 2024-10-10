@@ -89,7 +89,26 @@ export default function Weather({ defaultCity }: WeatherProps) {
             </div>
           </form>
           <br />
-          <WeatherSearch data={weatherInfo} />
+          {/* Only pass weatherInfo to WeatherSearch when all required data is present */}
+          {weatherInfo.city &&
+            weatherInfo.temperature !== undefined &&
+            weatherInfo.date &&
+            weatherInfo.icon &&
+            weatherInfo.description &&
+            weatherInfo.humidity !== undefined &&
+            weatherInfo.wind !== undefined && (
+              <WeatherSearch
+                data={{
+                  city: weatherInfo.city,
+                  temperature: weatherInfo.temperature,
+                  date: weatherInfo.date,
+                  icon: weatherInfo.icon,
+                  description: weatherInfo.description,
+                  humidity: weatherInfo.humidity,
+                  wind: weatherInfo.wind,
+                }}
+              />
+            )}
           <Forecast coordinates={weatherInfo.coordinates!} />
         </div>
       </div>
