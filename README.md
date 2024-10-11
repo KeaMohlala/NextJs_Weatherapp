@@ -1,0 +1,1 @@
+This is a simple weather application built with Next.js, Tailwind CSS, and TypeScript. The app allows users to search for weather information by city name and displays a 6-day weather forecast using the OpenWeatherMap API.
