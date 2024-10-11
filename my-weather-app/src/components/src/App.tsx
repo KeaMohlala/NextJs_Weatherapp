@@ -8,7 +8,7 @@ export default function App() {
       <Weather defaultCity="Johannesburg" />
       <small className="text-gray-600 mt-4">
         <a
-          href="https://github.com/KeaMohlala/react-weatherapp.git"
+          href="https://github.com/KeaMohlala/NextJs_Weatherapp"
           target="_blank"
           rel="noreferrer"
           className="hover:underline"
