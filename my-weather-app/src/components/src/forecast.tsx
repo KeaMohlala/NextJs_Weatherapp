@@ -36,12 +36,12 @@ export default function Forecast({ coordinates }: ForecastProps) {
 
   if (ready) {
     return (
-      <div className="forecast" id="forecast">
-        <div className="row mb-3 mt-3">
+      <div className="forecast p-4" id="forecast">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-3 mt-3">
           {forecast.map((dailyForecast, index) => {
             if (index < 6) {
               return (
-                <div className="col-4" key={index}>
+                <div key={index}>
                   <ForecastDay data={dailyForecast} />
                 </div>
               );

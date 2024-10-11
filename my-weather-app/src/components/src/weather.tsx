@@ -66,28 +66,25 @@ export default function Weather({ defaultCity }: WeatherProps) {
           id="search-form"
           onSubmit={handleSubmit}
         >
-          <div className="flex">
-            <div className="flex-grow mr-2">
-              <input
-                type="search"
-                placeholder="Type a city.."
-                autoFocus
-                autoComplete="off"
-                className="form-control shadow-sm p-2 border rounded"
-                id="search-input"
-                onChange={handleCityChange}
-              />
-            </div>
-            <div className="flex-shrink">
-              <input
-                type="submit"
-                value="Search"
-                className="form-control btn bg-blue-500 text-white shadow-sm w-full rounded"
-              />
-            </div>
+          <div className="flex space-x-2">
+            <input
+              type="search"
+              placeholder="Type a city.."
+              autoFocus
+              autoComplete="off"
+              className="form-control shadow-sm p-2 border rounded flex-grow"
+              id="search-input"
+              onChange={handleCityChange}
+            />
+            <button
+              type="submit"
+              className="bg-blue-500 text-white shadow-sm rounded p-2"
+            >
+              Search
+            </button>
           </div>
         </form>
-        {/* Only pass weatherInfo to WeatherSearch when all required data is present */}
+
         {weatherInfo.city &&
           weatherInfo.temperature !== undefined &&
           weatherInfo.date &&

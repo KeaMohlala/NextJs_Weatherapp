@@ -28,7 +28,7 @@ export default function WeatherSearch({ data }: WeatherSearchProps) {
       <div className="search" id="date">
         <FormattedDate date={data.date} alt={data.description} />
       </div>
-      <div>
+      <div className="flex justify-center items-center">
         <WeatherIcon code={data.icon} size={50} />
       </div>
       <div className="description text-capitalize text-xl" id="description">

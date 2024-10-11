@@ -42,21 +42,15 @@ export default function ForecastDay({ data }: ForecastDayProps) {
   }
 
   return (
-    <div>
-      <div className="card mt-1 mb-3">
-        <div className="card-body">
-          <h5 className="card-title forecast-date">{day()}</h5>
-          <div className="weather-forecast">
-            <span className="card-text weather-forecast-min">
-              <p>{minTemperature()}°C</p>
-            </span>
-            <span className="card-text weather-forecast-max">
-              <p>{maxTemperature()}°C</p>
-            </span>
-          </div>
-          <span className="weather-forecast-icon">
-            <WeatherIcon code={data.weather[0].icon} size={40} />
-          </span>
+    <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="text-center">
+        <h5 className="text-lg font-bold mb-2">{day()}</h5>
+        <div className="flex justify-between items-center mb-2">
+          <p className="text-sm font-medium">{minTemperature()}°C</p>
+          <p className="text-sm font-medium">{maxTemperature()}°C</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <WeatherIcon code={data.weather[0].icon} size={40} />
         </div>
       </div>
     </div>
