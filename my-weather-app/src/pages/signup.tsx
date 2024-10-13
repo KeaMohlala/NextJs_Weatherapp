@@ -11,18 +11,21 @@ export default function Signup() {
   const handleSignup = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Post request to login API
     try {
-      const response = await axios.post("/api/signup", { email, password });
+      const response = await axios.post("/api/signup", {
+        name,
+        email,
+        password,
+      });
 
       // Save token in local storage
       localStorage.setItem("token", response.data.token);
 
-      // Redirect to the weather app after login
+      // Redirect to the weather app after signup
       router.push("/");
     } catch (error) {
-      console.error("Login failed", error);
-      alert("Login failed, please try again.");
+      console.error("Signup failed", error);
+      alert("Signup failed, please try again.");
     }
   };
 

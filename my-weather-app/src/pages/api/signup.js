@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { connectToDatabase } from "../../lib/mongodb";
+import jwt from "jsonwebtoken"; // Add JWT import
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -27,7 +28,14 @@ export default async function handler(req, res) {
       password: hashedPassword,
     });
 
-    res.status(201).json({ message: "User created!" });
+    // Generate JWT Token
+    const token = jwt.sign(
+      { email: email, userId: result.insertedId },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    res.status(201).json({ message: "User created!", token });
   } else {
     res.status(405).json({ message: "Method not allowed" });
   }
