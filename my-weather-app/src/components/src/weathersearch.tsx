@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import FormattedDate from "./formatteddate";
 import WeatherIcon from "./weathericon";
 import WeatherTemperature from "./weathertemperature";
@@ -13,6 +14,11 @@ interface WeatherSearchProps {
     description: string;
     humidity: number;
     wind: number;
+    feelsLike: number;
+    precipitation: number;
+    sunrise: number;
+    sunset: number;
+    clouds: number;
   };
 }
 
@@ -37,6 +43,24 @@ export default function WeatherSearch({ data }: WeatherSearchProps) {
       <div className="moreinfo flex justify-around mt-4">
         <span className="humidity text-sm">Humidity: {data.humidity}%</span>
         <span className="wind text-sm">Wind: {Math.round(data.wind)} km/h</span>
+      </div>
+      <div className="flex justify-center mt-4">
+        <Link
+          href={{
+            pathname: "/weatherDetails",
+            query: {
+              city: data.city,
+              clouds: data.clouds,
+              feelsLike: data.feelsLike,
+              precipitation: data.precipitation,
+              sunrise: data.sunrise,
+              sunset: data.sunset,
+            },
+          }}
+          className="text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600"
+        >
+          More Info →
+        </Link>
       </div>
     </div>
   );

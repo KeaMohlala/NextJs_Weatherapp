@@ -25,3 +25,8 @@ body {
     overflow-wrap: balance;
   }
 }
+
+a:hover {
+  text-decoration: none;
+  background-color: #1e3a8a;
+}
