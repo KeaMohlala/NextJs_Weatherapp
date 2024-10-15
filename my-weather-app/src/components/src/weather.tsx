@@ -12,12 +12,18 @@ interface WeatherData {
   ready: boolean;
   coordinates?: { lat: number; lon: number };
   temperature?: number;
+  feelsLike?: number;
   wind?: number;
   city?: string;
   humidity?: number;
   description?: string;
   icon?: string;
+  clouds?: number;
+  precipitation?: number;
+  sunrise?: number;
+  sunset?: number;
   date?: Date;
+  timezone?: number;
 }
 
 export default function Weather({ defaultCity }: WeatherProps) {
@@ -29,12 +35,18 @@ export default function Weather({ defaultCity }: WeatherProps) {
       ready: true,
       coordinates: response.data.coord,
       temperature: response.data.main.temp,
+      feelsLike: response.data.main.feels_like,
       wind: response.data.wind.speed,
       city: response.data.name,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
+      clouds: response.data.clouds.all,
+      precipitation: response.data.rain ? response.data.rain["1h"] : 0,
+      sunrise: response.data.sys.sunrise,
+      sunset: response.data.sys.sunset,
       date: new Date(response.data.dt * 1000),
+      timezone: response.data.timezone,
     });
   }
 
@@ -78,7 +90,7 @@ export default function Weather({ defaultCity }: WeatherProps) {
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white shadow-sm rounded p-2"
+              className="border-4 border-blue-500 text-gray-600 shadow-sm rounded px-2 py-1 "
             >
               Search
             </button>
@@ -101,6 +113,12 @@ export default function Weather({ defaultCity }: WeatherProps) {
                 description: weatherInfo.description,
                 humidity: weatherInfo.humidity,
                 wind: weatherInfo.wind,
+                feelsLike: weatherInfo.feelsLike,
+                precipitation: weatherInfo.precipitation,
+                clouds: weatherInfo.clouds,
+                sunrise: weatherInfo.sunrise,
+                sunset: weatherInfo.sunset,
+                timezone: weatherInfo.timezone,
               }}
             />
           )}
