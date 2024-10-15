@@ -23,6 +23,7 @@ interface WeatherData {
   sunrise?: number;
   sunset?: number;
   date?: Date;
+  timezone?: number;
 }
 
 export default function Weather({ defaultCity }: WeatherProps) {
@@ -45,6 +46,7 @@ export default function Weather({ defaultCity }: WeatherProps) {
       sunrise: response.data.sys.sunrise,
       sunset: response.data.sys.sunset,
       date: new Date(response.data.dt * 1000),
+      timezone: response.data.timezone,
     });
   }
 
@@ -116,6 +118,7 @@ export default function Weather({ defaultCity }: WeatherProps) {
                 clouds: weatherInfo.clouds,
                 sunrise: weatherInfo.sunrise,
                 sunset: weatherInfo.sunset,
+                timezone: weatherInfo.timezone,
               }}
             />
           )}

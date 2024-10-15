@@ -19,6 +19,7 @@ interface WeatherSearchProps {
     sunrise: number;
     sunset: number;
     clouds: number;
+    timezone: number;
   };
 }
 
@@ -55,6 +56,7 @@ export default function WeatherSearch({ data }: WeatherSearchProps) {
               precipitation: data.precipitation,
               sunrise: data.sunrise,
               sunset: data.sunset,
+              timezone: data.timezone,
             },
           }}
           className="text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600"
