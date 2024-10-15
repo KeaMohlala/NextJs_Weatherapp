@@ -90,7 +90,7 @@ export default function Weather({ defaultCity }: WeatherProps) {
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white shadow-sm rounded p-2"
+              className="border-4 border-blue-500 text-gray-600 shadow-sm rounded px-2 py-1 "
             >
               Search
             </button>

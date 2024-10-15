@@ -14,32 +14,40 @@ export default function App() {
   };
 
   return (
-    <div className="App bg-gradient-to-br from-purple-100 to-blue-100 min-h-screen flex flex-col items-center justify-center">
-      {!token ? (
-        <div className="absolute top-0 right-0 p-4">
-          <button
-            onClick={() => router.push("/login")}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => router.push("/signup")}
-            className="ml-2 bg-green-500 text-white px-4 py-2 rounded"
-          >
-            Sign Up
-          </button>
+    <div className="App bg-gradient-to-br from-purple-100 to-blue-100 min-h-screen flex flex-col items-center">
+      <nav className="w-full p-4 bg-white shadow-md flex justify-between items-center">
+        {/* Left Section for Weather App Title */}
+        <div className="text-2xl text-gray-700 font-bold font-sans">
+          Weather App
         </div>
-      ) : (
-        <div className="absolute top-0 right-0 p-4">
-          <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white px-4 py-2 rounded"
-          >
-            Logout
-          </button>
+
+        {/* Right Section for Login/Sign Up or Logout Buttons */}
+        <div className="flex space-x-4">
+          {!token ? (
+            <>
+              <button
+                onClick={() => router.push("/login")}
+                className="font-sans font-bold  text-gray-600 px-4 py-2"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => router.push("/signup")}
+                className="font-sans font-bold ml-2  text-gray-600 px-4 py-2"
+              >
+                Sign Up
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="border-4 border-red-200 rounded text-gray-600 px-4 py-2 font-sans font-bold "
+            >
+              Logout
+            </button>
+          )}
         </div>
-      )}
+      </nav>
 
       <Weather defaultCity="Johannesburg" />
       <small className="text-gray-600 mt-4">

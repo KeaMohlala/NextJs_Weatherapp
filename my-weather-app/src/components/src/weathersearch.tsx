@@ -45,7 +45,7 @@ export default function WeatherSearch({ data }: WeatherSearchProps) {
         <span className="humidity text-sm">Humidity: {data.humidity}%</span>
         <span className="wind text-sm">Wind: {Math.round(data.wind)} km/h</span>
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-end mt-4">
         <Link
           href={{
             pathname: "/weatherDetails",
@@ -59,9 +59,9 @@ export default function WeatherSearch({ data }: WeatherSearchProps) {
               timezone: data.timezone,
             },
           }}
-          className="text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600"
+          className="text-white text px-4 rounded hover:bg-blue-300"
         >
-          More Info →
+          →
         </Link>
       </div>
     </div>

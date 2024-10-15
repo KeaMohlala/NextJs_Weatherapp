@@ -30,9 +30,8 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen font-sans bg-gradient-to-br from-purple-100 to-blue-100">
       <form className="bg-white p-6 rounded shadow-md" onSubmit={handleSignup}>
-        <h2 className="text-xl mb-4">Sign Up</h2>
         <input
           className="block w-full p-2 mb-2 border rounded"
           type="text"
@@ -54,7 +53,7 @@ export default function Signup() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="w-full bg-blue-500 text-white p-2 rounded">
+        <button className="w-full border-4 border-purple-100 text-gray-600 p-2 rounded  hover:bg-purple-200">
           Sign Up
         </button>
       </form>
