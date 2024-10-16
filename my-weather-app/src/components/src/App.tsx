@@ -2,6 +2,7 @@
 //import "./index.css";
 import Weather from "./weather";
 import { useRouter } from "next/router";
+import { DiGithubBadge } from "react-icons/di";
 
 export default function App() {
   const router = useRouter();
@@ -57,9 +58,8 @@ export default function App() {
           rel="noreferrer"
           className="hover:underline"
         >
-          Open-source code
+          <DiGithubBadge size={30} />
         </a>
-        , by Keamogetse Mohlala
       </small>
     </div>
   );

@@ -3,6 +3,7 @@ import Link from "next/link";
 import FormattedDate from "./formatteddate";
 import WeatherIcon from "./weathericon";
 import WeatherTemperature from "./weathertemperature";
+import { GoArrowRight } from "react-icons/go";
 import "./index.css";
 
 interface WeatherSearchProps {
@@ -61,7 +62,7 @@ export default function WeatherSearch({ data }: WeatherSearchProps) {
           }}
           className="text-white text px-4 rounded hover:bg-blue-300"
         >
-          →
+          <GoArrowRight size={30} />
         </Link>
       </div>
     </div>
