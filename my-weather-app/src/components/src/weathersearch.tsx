@@ -3,6 +3,7 @@ import Link from "next/link";
 import FormattedDate from "./formatteddate";
 import WeatherIcon from "./weathericon";
 import WeatherTemperature from "./weathertemperature";
+import City from "./city";
 import { GoArrowRight } from "react-icons/go";
 import "./index.css";
 
@@ -22,9 +23,15 @@ interface WeatherSearchProps {
     clouds: number;
     timezone: number;
   };
+  isFavourited: boolean;
+  onFavouriteChange: (city: string) => void;
 }
 
-export default function WeatherSearch({ data }: WeatherSearchProps) {
+export default function WeatherSearch({
+  data,
+  isFavourited,
+  onFavouriteChange,
+}: WeatherSearchProps) {
   return (
     <div className="Weathersearch bg-gradient-to-t from-blue-300 to-blue-500 text-white p-5 rounded-lg shadow-lg">
       <div className="city text-4xl font-bold mb-2">
@@ -46,7 +53,14 @@ export default function WeatherSearch({ data }: WeatherSearchProps) {
         <span className="humidity text-sm">Humidity: {data.humidity}%</span>
         <span className="wind text-sm">Wind: {Math.round(data.wind)} km/h</span>
       </div>
-      <div className="flex justify-end mt-4">
+      <div className="flex justify-between mt-4">
+        <div>
+          <City
+            cityName={data.city}
+            isFavourited={isFavourited} // isFavourited prop passed
+            onFavouriteChange={() => onFavouriteChange(data.city)} // Corrected function
+          />
+        </div>
         <Link
           href={{
             pathname: "/weatherDetails",
