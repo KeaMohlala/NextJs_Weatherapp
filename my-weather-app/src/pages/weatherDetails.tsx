@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { GoArrowLeft } from "react-icons/go";
 
 export default function WeatherDetails() {
   const router = useRouter();
@@ -58,9 +59,9 @@ export default function WeatherDetails() {
           <div className="flex justify-center">
             <button
               onClick={() => router.push("/")}
-              className=" text-blue-400 px-6 py-2 rounded hover:bg-blue-500"
+              className=" text-blue-400 px-4 rounded hover:bg-blue-500"
             >
-              ←
+              <GoArrowLeft size={30} />
             </button>
           </div>
         </div>

@@ -21,11 +21,11 @@ export default async function handler(req, res) {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // Store new user
     const result = await db.collection("users").insertOne({
       name,
       email,
       password: hashedPassword,
+      favourites: [], // New field for favorite cities
     });
 
     // Generate JWT Token

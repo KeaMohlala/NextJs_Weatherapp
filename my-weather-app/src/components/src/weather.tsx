@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherSearch from "./weathersearch";
 import Forecast from "./forecast";
-//import "./index.css";
 
 interface WeatherProps {
   defaultCity: string;
+  favourites: string[];
+  onFavouriteChange: (city: string) => void;
 }
 
 interface WeatherData {
@@ -26,7 +27,11 @@ interface WeatherData {
   timezone?: number;
 }
 
-export default function Weather({ defaultCity }: WeatherProps) {
+export default function Weather({
+  defaultCity,
+  favourites,
+  onFavouriteChange,
+}: WeatherProps) {
   const [weatherInfo, setWeatherInfo] = useState<WeatherData>({ ready: false });
   const [city, setCity] = useState<string>(defaultCity);
 
@@ -71,6 +76,7 @@ export default function Weather({ defaultCity }: WeatherProps) {
   }, [weatherInfo.ready]);
 
   if (weatherInfo.ready) {
+    const isFavourited = favourites.includes(weatherInfo.city!);
     return (
       <div className="container mx-auto p-5">
         <form
@@ -99,11 +105,7 @@ export default function Weather({ defaultCity }: WeatherProps) {
 
         {weatherInfo.city &&
           weatherInfo.temperature !== undefined &&
-          weatherInfo.date &&
-          weatherInfo.icon &&
-          weatherInfo.description &&
-          weatherInfo.humidity !== undefined &&
-          weatherInfo.wind !== undefined && (
+          weatherInfo.date && (
             <WeatherSearch
               data={{
                 city: weatherInfo.city,
@@ -120,6 +122,8 @@ export default function Weather({ defaultCity }: WeatherProps) {
                 sunset: weatherInfo.sunset,
                 timezone: weatherInfo.timezone,
               }}
+              isFavourited={isFavourited}
+              onFavouriteChange={onFavouriteChange}
             />
           )}
         <Forecast coordinates={weatherInfo.coordinates!} />
