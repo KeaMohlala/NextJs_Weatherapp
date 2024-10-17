@@ -4,7 +4,7 @@ import { TiHeartFullOutline, TiHeartOutline } from "react-icons/ti";
 interface CityData {
   cityName: string;
   isFavourited: boolean;
-  onFavouriteChange: () => void;
+  onFavouriteChange: (city: string) => void;
 }
 
 export default function City({

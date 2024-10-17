@@ -73,7 +73,12 @@ export default function App() {
         </div>
       </nav>
 
-      {showFavourites && <FavouritesList favourites={favourites} />}
+      {showFavourites && (
+        <FavouritesList
+          favourites={favourites}
+          onFavouriteChange={handleFavouriteChange}
+        />
+      )}
 
       <Weather
         defaultCity="Johannesburg"
