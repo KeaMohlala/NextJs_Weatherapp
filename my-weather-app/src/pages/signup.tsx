@@ -1,6 +1,9 @@
+//Frontend pages for user signup.
+//Interacts with the corresponding API route to authenticate users.
+
 import { useState } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
+import { useRouter } from "next/router"; //allows navigation between pages programmatically.
+import axios from "axios"; //a library for making HTTP requests.
 
 export default function Signup() {
   const [email, setEmail] = useState("");

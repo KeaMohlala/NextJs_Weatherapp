@@ -1,3 +1,6 @@
+//src/components/weather.tsx:responsible for fetching weather data from the OpenWeather API based on the user's city input
+//displays weather data using the WeatherSearch and Forecast components.
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherSearch from "./weathersearch";
@@ -54,17 +57,17 @@ export default function Weather({
       timezone: response.data.timezone,
     });
   }
-
+  //fetch weather data and pass to cityWeather for processing
   function search() {
     const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`;
     axios.get(apiUrl).then(cityWeather);
   }
-
+  //Handles the form submission when the user searches for a city.
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     search();
   }
-
+  //Updates the city state with the user's input as they type in the search field.
   function handleCityChange(event: React.ChangeEvent<HTMLInputElement>) {
     setCity(event.target.value);
   }

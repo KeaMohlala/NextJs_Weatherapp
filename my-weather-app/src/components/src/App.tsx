@@ -1,3 +1,4 @@
+//src/components/App.tsx: main component to render the weather app interface.
 import Weather from "./weather";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
@@ -6,12 +7,15 @@ import { DiGithubBadge } from "react-icons/di";
 import { TiBookmark } from "react-icons/ti";
 
 export default function App() {
-  const router = useRouter();
+  const router = useRouter(); //initialize the router to navigate user to different routes
+
+  //retrieve token from local storage to verify if the user is logged in.
   const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
+    typeof window !== "undefined" ? localStorage.getItem("token") : null; //condition ensures this only runs on the client side
   const [favourites, setFavourites] = useState<string[]>([]);
   const [showFavourites, setShowFavourites] = useState(false);
 
+  //retrieve list of cities from local storage and store in favourites state variable
   useEffect(() => {
     const storedFavourites = localStorage.getItem("favourites");
     if (storedFavourites) {
@@ -24,16 +28,19 @@ export default function App() {
     router.push("/login");
   };
 
+  //toggles the visibility of the FavouritesList component
   const handleBookmarkClick = () => {
     setShowFavourites(!showFavourites);
   };
 
+  //adds or removes a city from the favourites array
   const handleFavouriteChange = (city: string) => {
-    const updatedFavourites = favourites.includes(city)
-      ? favourites.filter((fav) => fav !== city)
-      : [...favourites, city];
+    const updatedFavourites = favourites.includes(city) //condition to check if city is in fav list
+      ? favourites.filter((fav) => fav !== city) //remove city
+      : [...favourites, city]; //add city to list using spread operator
 
     setFavourites(updatedFavourites);
+    //updated favourites saved back into localStorage after conversion to JSON string).
     localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
   };
 

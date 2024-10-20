@@ -1,12 +1,16 @@
+//Frontend pags for user login=5h.
+//Interacts with the corresponding API route to authenticate users.
+
 import React, { useState } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
+import { useRouter } from "next/router"; //allows navigation between pages programmatically.
+import axios from "axios"; //a library for making HTTP requests.
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
+  //handle form submission
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
 

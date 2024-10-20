@@ -1,3 +1,4 @@
+//displays the weather information for a specific city
 import React from "react";
 import Link from "next/link";
 import FormattedDate from "./formatteddate";

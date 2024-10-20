@@ -1,11 +1,13 @@
-import bcrypt from "bcryptjs";
-import { connectToDatabase } from "../../lib/mongodb";
-import jwt from "jsonwebtoken"; // Add JWT import
+//src/pages/api/signup.js: handles signup functionalities
+import bcrypt from "bcryptjs"; //password security
+import { connectToDatabase } from "../../lib/mongodb"; //to store user data
+import jwt from "jsonwebtoken"; // manage user sessions
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { name, email, password } = req.body;
 
+    //password, email and name are required
     if (!email || !password || !name) {
       return res.status(422).json({ message: "Invalid input." });
     }

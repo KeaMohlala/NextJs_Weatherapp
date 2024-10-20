@@ -1,12 +1,15 @@
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import { connectToDatabase } from "../../lib/mongodb";
+//src/pages/api/login.js: API route to handle login functionalities
+import bcrypt from "bcryptjs"; //to compare passwords
+import jwt from "jsonwebtoken"; //manage user sessions
+import { connectToDatabase } from "../../lib/mongodb"; //function to retrieve user data
 
+//function to handle the API request
 export default async function handler(req, res) {
+  //API route only accepts POST requests
   if (req.method === "POST") {
-    const { email, password } = req.body;
+    const { email, password } = req.body; //extract email & password fields submitted by user
 
-    const { db } = await connectToDatabase();
+    const { db } = await connectToDatabase(); //establish connection to MongoDB database
 
     // Check if user exists
     const user = await db.collection("users").findOne({ email });
