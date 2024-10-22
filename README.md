@@ -12,11 +12,38 @@ The **Next.js Weather App** is a web application that provides weather informati
 - Responsive design for mobile and desktop
 - Easily customizable and extendable
 
+```
 ## Project Structure
 
-NextJs_Weatherapp/ ├── src/ │ ├── lib/ │ │ └── mongodb.js # MongoDB connection setup │ ├── pages/ │ │ ├── api/ │ │ │ ├── login.js # API route for user login │ │ │ ├── signup.js # API route for user signup │ │ │ ├── favorites.js # API route to manage favorites │ │ │ └── fetch-favorites.js # API route to fetch favorite weather data │ │ ├── login.tsx # Login page component │ │ ├── signup.tsx # Signup page component │ │ ├── index.tsx # Home page component │ │ └── weatherDetails.tsx # Weather details page component │ ├── components/ │ │ └── src/ │ │ ├── App.tsx # Main application component │ │ ├── weather.tsx # Weather display component │ │ ├── weathersearch.tsx # Weather search component │ │ ├── city.tsx # City display component │ │ ├── favouriteslist.tsx # Favorites list component │ │ ├── forecast.tsx # Forecast display component │ │ ├── weathericon.tsx # Weather icon component │ │ ├── formatteddate.tsx # Formatted date display component │ │ └── weathertemperature.tsx # Weather temperature display component ├── .env.local # Environment variables ├── package.json # Project dependencies and scripts └── README.md # Project documentation
-
-
+NextJs_Weatherapp/
+├── src/
+│   ├── lib/
+│   │   └── mongodb.js
+│   ├── pages/
+│   │   ├── api/
+│   │   │   ├── login.js
+│   │   │   ├── signup.js
+│   │   │   ├── favorites.js
+│   │   │   └── fetch-favorites.js
+│   │   ├── login.tsx
+│   │   ├── signup.tsx
+│   │   ├── index.tsx
+│   │   └── weatherDetails.tsx
+│   ├── components/
+│   │   └── src/
+│   │       ├── App.tsx
+│   │       ├── weather.tsx
+│   │       ├── weathersearch.tsx
+│   │       ├── city.tsx
+│   │       ├── favouriteslist.tsx
+│   │       ├── forecast.tsx
+│   │       ├── weathericon.tsx
+│   │       ├── formatteddate.tsx
+│   │       └── weathertemperature.tsx
+├── .env.local
+├── package.json
+└── README.md
+```
 
 ## Installation
 
