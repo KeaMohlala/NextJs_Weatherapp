@@ -66,23 +66,28 @@ npm run dev
 
 5 Open your browser and go to http://localhost:3000 to see the app in action.
 
-Usage
+Usage:
+
 Users can log in or sign up to access personalized weather information.
 Once logged in, users can search for cities and view their current weather.
 Users can also save their favorite cities for quick access.
 Contributing
 Feel free to fork the repository and submit pull requests. Contributions are welcome!
 
-License
+License:
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Acknowledgments
+Acknowledgments:
+
 Next.js
 React
 MongoDB
 
 
- 6 Author : Keamogetse Mohlala (keamogetsemhll@gmail.com) and Daniel Egbuluese (danniwide.1981@gmail.com) 
+ 6 Author : 
+
+Keamogetse Mohlala (keamogetsemhll@gmail.com) and Daniel Egbuluese (danniwide.1981@gmail.com) 
 
 
 
